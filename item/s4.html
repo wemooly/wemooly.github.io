@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SXY手机端2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet"  href="css/swiper.min.css" >
+
+<script src="js/zepto.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<style>
+
+* {
+	margin: 0;
+	padding: 0;
+}
+/*perspective  透视景深*/
+  .swiper-wrapper {
+    -webkit-perspective: 1200px;
+    -moz-perspective: 1200px;
+    -ms-perspective: 1200px;
+    perspective: 1200px;
+  }
+  .swiper-slide {
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+   overflow:hidden;
+
+  }
+
+.list1{background:url(images/1.jpg) no-repeat; background-size:cover;}
+.list2{background:url(images/2.jpg) no-repeat; background-size:cover;}
+.list3{background:url(images/3.jpg) no-repeat; background-size:cover;}
+.list4{background:url(images/4.jpg) no-repeat; background-size:cover;}
+</style>
+<script>
+
+
+
+	
+
+
+</script>
+</head>
+<body>
+<div style="max-width:640px; margin:0 auto;" >
+
+      <div class="swiper-container swiper-container-vertical">
+        <div class="swiper-wrapper">
+              <div class="swiper-slide list1">
+              </div>
+              <div class="swiper-slide list2" >
+                
+              </div>
+              <div class="swiper-slide list3">
+                
+              </div>
+              <div class="swiper-slide list4" >
+                  
+              </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      
+</div>
+<script type="text/javascript">
+
+	var $viewHeight = $(window).height();
+	
+	$('.swiper-slide,.swiper-container').css({
+		height: $viewHeight,
+	})
+	
+
+$(window).on('resize load', function() {
+	$('.swiper-slide,.swiper-container').css({
+		height: $viewHeight
+	})
+})
+
+
+var mySwiper = new Swiper('.swiper-container', {
+
+    direction: 'vertical',
+	 pagination: '.swiper-pagination',
+     direction: 'vertical',
+	watchSlidesProgress: true,
+	onInit: function(swiper) {
+		swiper.myactive = 0;
+		
+	},
+	onProgress: function(swiper) {
+		for (var i = 0; i < swiper.slides.length; i++) {
+			var slide = swiper.slides[i];
+			var progress = slide.progress;
+			var translate, boxShadow;
+
+			translate = progress * swiper.height * 0.8;
+			scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+			boxShadowOpacity = 0;
+
+			slide.style.boxShadow = '0px 0px 10px rgba(0,0,0,' + boxShadowOpacity + ')';
+
+			if (i == swiper.myactive) {
+				es = slide.style;
+				es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')';
+				es.zIndex=0;
+
+
+			}else{
+				es = slide.style;
+				es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform ='';
+				es.zIndex=1;
+				
+			}
+
+		}
+
+	},
+
+
+	onTransitionEnd: function(swiper, speed) {
+		for (var i = 0; i < swiper.slides.length; i++) {
+		//	es = swiper.slides[i].style;
+		//	es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = '';
+
+		//	swiper.slides[i].style.zIndex = Math.abs(swiper.slides[i].progress);
+
+			
+		}
+
+		swiper.myactive = swiper.activeIndex;
+
+	},
+	onSetTransition: function(swiper, speed) {
+
+		for (var i = 0; i < swiper.slides.length; i++) {
+			//if (i == swiper.myactive) {
+
+				es = swiper.slides[i].style;
+				es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+			//}
+		}
+
+	}
+
+});
+</script>
+
+
+
+</body>
+</html>

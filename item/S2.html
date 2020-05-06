@@ -1,0 +1,508 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=640,user-scalable=no,target-densityDpi=device-dpi">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+body{font-family:Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-self;}
+li{ list-style:none;}
+#main{ width:640px; height:1138px; position:relative; overflow:hidden;}
+#c1{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:10;}
+
+#list > li{ width:100%; height:100%; position:absolute; left:0; top:0; background-size:cover; display:none; z-index:5;}
+#list > li.zIndex{ z-index:6;}
+#list > li:nth-of-type(1){ background-image:url(images/1.jpg); display:block;}
+#list > li:nth-of-type(2){ background-image:url(images/8.jpg);}
+#list > li:nth-of-type(3){ background-image:url(images/2.jpg);}
+#list > li:nth-of-type(4){ background-image:url(images/5.jpg);}
+#list > li:nth-of-type(5){ background-image:url(images/6.jpg);}
+#list > li:nth-of-type(6){ background-image:url(images/7.jpg);}
+#list > li:nth-of-type(7){ background-image:url(images/9.jpg);}
+#list > li:nth-of-type(8){ background-image:url(images/3.jpg);}
+
+#list .li1Child{ font-size:24px; line-height:36px; color:#f3ebd1; position:absolute; left:25%; top:60%;}
+
+#list .li2Child li{ width:90px; height:90px; position:absolute; margin-left:-45px;}
+#list .li2Child li:nth-of-type(1){ background:url(images/h1.png) no-repeat; left:50%; top:30%;}
+#list .li2Child li:nth-of-type(2){ background:url(images/h2.png) no-repeat; left:20%; top:40%;}
+#list .li2Child li:nth-of-type(3){ background:url(images/h3.png) no-repeat; left:80%; top:40%;}
+#list .li2Child li:nth-of-type(4){ background:url(images/h4.png) no-repeat; left:20%; top:60%;}
+#list .li2Child li:nth-of-type(5){ background:url(images/h5.png) no-repeat; left:80%; top:60%;}
+#list .li2Child li:nth-of-type(6){ background:url(images/h6.png) no-repeat; left:50%; top:72%;}
+#list .li2Child li.active{ left:50%; top:50%}
+#list .li3Child{ width:262px; height:183px; background:url(images/d2.png) no-repeat; position:absolute; right:20%; margin-left:-131px; top:62%;}
+
+#list .li4Child li{ color:white; font-size:22px; border:2px #FFF solid; border-radius:5px; box-shadow:0 0 15px #FFF; word-wrap:break-word; position:absolute; overflow:hidden; padding:5px; box-sizing:border-box;}
+#list .li4Child li:nth-of-type(1){ width:300px; height:250px; left:30%; top:40%; padding:10px;}
+#list .li4Child li.active{ width:0; height:0;}
+
+#list .list5child div{width:303px;height:438px;background:url(images/m1.jpg) no-repeat; position:absolute; left:10%; top:10%;}
+
+#list .list6child div{width:380px;height:184px; background:url(images/n3.jpg) no-repeat; position:absolute; bottom:20%; left:50%; margin-left:-190px;}
+
+#list .list7child div{width:585px; height:414px; background:url(images/n1.png) no-repeat; opacity:1; position:absolute; top:10%; left:3%;}
+#list .list7Child div.active{ opacity:0;}
+
+#list .list8child div{width:414px;height:256px; background:url(images/n2.png) no-repeat; opacity:; position:absolute; top:36%;left:3%;}
+#list .list8Child div.active{ opacity:0;}
+
+#arrow{ width:90px; height:52px; background:url(images/arr.png) no-repeat; position:absolute; left:50%; bottom:15px; margin-left:-45px; z-index:8; animation:1s infinite arrowMove; -webkit-animation:1s infinite arrowMove;}
+@keyframes arrowMove{
+	0%{ opacity:0; transform:translate(0,0);}
+	50%{ opacity:1; transform:translate(0,-30px);}
+	100%{ opacity:0; transform:translate(0,-50px);}
+}
+@-webkit-keyframes arrowMove{
+	0%{ opacity:0; -webkit-transform:translate(0,0);}
+	50%{ opacity:1; -webkit-transform:translate(0,-30px);}
+	100%{ opacity:0; -webkit-transform:translate(0,-50px);}
+}
+#music{ width:70px; height:70px; background:url(images/music.png) no-repeat; background-size:cover; position:absolute; top:20px; right:20px; z-index:8;}
+#music.active{ animation:1s linear infinite musicMove; -webkit-animation:1s linear infinite musicMove;}
+@keyframes musicMove{
+	0%{ transform:rotate(0);}
+	100%{ transform:rotate(360deg);}
+}
+@-webkit-keyframes musicMove{
+	0%{ -webkit-transform:rotate(0);}
+	100%{ -webkit-transform:rotate(360deg);}
+}
+#loading{ width:100%; height:100%; position:absolute; left:0; top:0; z-index:20; background:white;}
+#loading ul{ position:absolute; left:50%; top:40%; width:90px; margin-left:-45px;}
+#loading ul li{ width:5px; height:40px; margin-right:10px; background:#0F0; float:left; animation:2s linear infinite loadingMove;}
+@keyframes loadingMove{
+	0%{ transform:scaleY(1);}
+	50%{ transform:scaleY(0.2);}
+	100%{ transform:scaleY(1);}
+}
+#loading ul li:nth-of-type(1){ animation-delay:-0s;}
+#loading ul li:nth-of-type(2){ animation-delay:-0.2s;}
+#loading ul li:nth-of-type(3){ animation-delay:-0.4s;}
+#loading ul li:nth-of-type(4){ animation-delay:-0.6s;}
+#loading ul li:nth-of-type(5){ animation-delay:-0.8s;}
+#loading ul li:nth-of-type(6){ animation-delay:-1s;}
+#loading div{ font-size:30px; color:#0F0; width:100%; text-align:center; top:50%; position:absolute;}
+</style>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script>
+//canvas像素级操作必须在服务器下运行才可以，
+$(document).on('touchmove',function(ev){
+	ev.preventDefault();
+});
+
+$(function(){
+	var $main = $('#main');
+	var $list = $('#list');
+	var $li = $list.find('>li');
+	
+	var desW = 640;
+	var desH = 1138;
+	var viewHeight = $(window).height();
+	
+	$main.css('height',viewHeight);
+	
+	/*showloading();*/
+	/*slideCanvas();*/
+	slideList();
+	
+	function nowWidth(){
+		var w = desW/desH * viewHeight;
+		return w;
+	}
+	
+	function slideCanvas(){
+		var oC = $('#c1').get(0);
+		var oGC = oC.getContext('2d');
+		var bBtn = true;
+		oC.height = viewHeight;
+		
+		var objImg = new Image();
+		objImg.src = 'images/a.png';
+		objImg.onload = function(){
+			oGC.drawImage(objImg,(desW - nowWidth())/2 ,0,nowWidth(),viewHeight);
+			oGC.fillStyle = 'red';
+			oGC.globalCompositeOperation = 'destination-out';
+			oGC.lineWidth = 60;
+			oGC.lineCap = 'round';
+			
+			$(oC).on('touchstart',function(ev){
+				var touch = ev.originalEvent.changedTouches[0];
+				var x = touch.pageX - $(this).offset().left;
+				var y = touch.pageY - $(this).offset().top;
+				
+				/*oGC.beginPath();
+				oGC.arc(x,y,100,0,360*Math.PI/180);
+				oGC.closePath();
+				oGC.fill();*/
+				if(bBtn){
+					bBtn = false;
+					oGC.moveTo(x,y);
+					oGC.lineTo(x+1,y+1);
+				}
+				else{
+					oGC.lineTo(x,y);
+				}
+				
+				oGC.stroke();
+				
+				$(oC).on('touchmove.move',function(ev){
+					var touch = ev.originalEvent.changedTouches[0];
+					var x = touch.pageX - $(this).offset().left;
+					var y = touch.pageY - $(this).offset().top;
+					oGC.lineTo(x,y);
+					oGC.stroke();
+				});
+				$(oC).on('touchend.move',function(){
+					
+					var dataImg = oGC.getImageData(0,0,oC.width,oC.height);
+					
+					var allPx = dataImg.width * dataImg.height;
+					var iNum = 0;
+					
+					for(var i=0;i<allPx;i++){
+						if(dataImg.data[i*4+3] == 0){
+							iNum++;
+						}
+					}
+					
+					if( iNum > allPx/2 ){
+						$(oC).animate({opacity:0},1000,function(){
+							$(this).remove();
+							cjAnimate[0].inAn();//调入场动画
+							showMusic();
+						});
+					}
+					$(oC).off('.move');
+				});
+			});
+		};
+	}
+	
+	function slideList(){
+		var downY = 0;
+		var step = 1/4;
+		
+		var nowIndex = 0;
+		var nextorprevIndex = 0;
+		var bBtn = true;
+	/*	
+		$li.css('backgroundPosition',( (desW - nowWidth())/2 )+'px 0');*/
+		$li.on('touchstart',function(ev){
+			if(!bBtn){return;}
+			bBtn = false;
+			var touch = ev.originalEvent.changedTouches[0];
+			downY = touch.pageY;
+			nowIndex = $(this).index();
+			
+			$li.on('touchmove',function(ev){
+				var touch = ev.originalEvent.changedTouches[0];
+				
+				$(this).siblings().hide();
+				
+				if( touch.pageY < downY ){  //↑
+					nextorprevIndex = nowIndex == $li.length-1 ? 0 : nowIndex + 1;
+					$li.eq(nextorprevIndex).css('transform','translate(0,'+(viewHeight + touch.pageY - downY)+'px)');
+				}
+				else if( touch.pageY > downY ){  //↓
+					nextorprevIndex = nowIndex == 0 ? $li.length-1 : nowIndex - 1;
+					$li.eq(nextorprevIndex).css('transform','translate(0,'+(-viewHeight + touch.pageY - downY)+'px)');
+				}
+				else{
+					bBtn = true;
+				}
+				
+				//Math.abs(touch.pageY - downY)/viewHeight*step  //-viewHeight~viewHeight
+				//0~1  -> 0~0.25
+				$li.eq(nextorprevIndex).show().addClass('zIndex');
+				$(this).css('transform','translate(0,'+(touch.pageY - downY)*step+'px) scale('+(1-Math.abs(touch.pageY - downY)/viewHeight*step)+')');
+				
+			});
+			
+			$li.on('touchend',function(ev){
+				var touch = ev.originalEvent.changedTouches[0];
+				if( touch.pageY < downY ){  //↑
+					$(this).css('transform','translate(0,'+(-viewHeight * step)+'px) scale('+(1-step)+')');
+				}
+				else if( touch.pageY > downY ){  //↓
+					$(this).css('transform','translate(0,'+(viewHeight * step)+'px) scale('+(1-step)+')');
+				}
+				$(this).css('transition','.3s');
+				$li.eq(nextorprevIndex).css('transform','translate(0,0)');
+				$li.eq(nextorprevIndex).css('transition','.3s');
+			});
+			
+		});
+		
+		$li.on('transitionEnd webkitTransitionEnd',function(ev){
+			if( $li.is(ev.target) ){
+				resetFn();
+				if(cjAnimate[nowIndex]){
+					cjAnimate[nowIndex].outAn();
+				}
+				if(cjAnimate[nextorprevIndex]){
+					cjAnimate[nextorprevIndex].inAn();
+				}
+				
+			}
+		});
+		
+		function resetFn(){
+			$li.css('transition','');
+			$li.eq(nextorprevIndex).removeClass('zIndex').siblings().hide();
+			bBtn = true;
+		}
+		
+	}
+	
+	var cjAnimate = [
+		{
+			inAn : function(){
+				var $liChild = $li.eq(0).find('li');
+				$liChild.css('opacity',1);
+				$liChild.css('transform','translate(0,0)');
+				$liChild.css('transition','1s');
+			
+			},
+			outAn : function(){
+				var $liChild = $li.eq(0).find('li');
+				$liChild.css('transition','');
+				$liChild.css('opacity',0);
+				$liChild.filter(':even').css('transform','translate(-200px,0)');
+				$liChild.filter(':odd').css('transform','translate(200px,0)');
+				
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(1).find('li');
+				$liChild.attr('class','');
+				$liChild.css('transform','rotate(720deg)');
+				$liChild.css('transition','1s');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(1).find('li');
+				$liChild.css('transform','rotate(0)');
+				$liChild.css('transition','');
+				$liChild.attr('class','active');
+			}
+		},
+		{
+			inAn : function(){
+				var $divChild = $li.eq(2).find('div');
+				$divChild.css('transform','rotateY(360deg)');
+				$divChild.css('transition','1s');
+			},
+			outAn : function(){
+				var $divChild = $li.eq(2).find('div');
+				$divChild.css('transform','rotateY(0)');
+				$divChild.css('transition','');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(3).find('li');
+				$liChild.css('transition','1s');
+				$liChild.attr('class','');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(3).find('li');
+				$liChild.css('transition','');
+				$liChild.attr('class','active');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(4).find('div');
+				$liChild.css('transition','1s');
+				$liChild.css('transform','translate(0,0px) scale(0.8,0.8)');
+				$liChild.attr('class','');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(4).find('div');
+				$liChild.css('transition','');
+				$liChild.css('transform','translate(100px,200px) scale(1,1)');
+				$liChild.attr('class','active');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(5).find('div');
+				$liChild.css('transition','1s');
+				$liChild.css('transform','scale(1,1)');
+				$liChild.attr('class','');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(5).find('div');
+				$liChild.css('transition','');
+				$liChild.css('transform','scale(-1,-1)');
+				$liChild.attr('class','active');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(6).find('div');
+				$liChild.css('transition','1s');
+				$liChild.css('transform','translate(0,0px) scale(1,1)');
+				$liChild.attr('class','');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(6).find('div');
+				$liChild.css('transition','');
+			$liChild.css('transform','translate(0,-200px) scale(-1,1)');
+				$liChild.attr('class','active');
+			}
+		},
+		{
+			inAn : function(){
+				var $liChild = $li.eq(7).find('div');
+				$liChild.css('transition','1s');
+				$liChild.css('transform','translate(0,0) skewY(-10deg)');
+				$liChild.attr('class','');
+			},
+			outAn : function(){
+				var $liChild = $li.eq(7).find('div');
+				$liChild.css('transition','');
+				$liChild.css('transform','translate(0px,200px) skewY(20deg)');
+				$liChild.attr('class','active');
+			}
+		}
+	];
+	
+	/*cjAnimate[3].outAn();
+	setTimeout(function(){
+		cjAnimate[3].inAn();
+	},100);*/
+	
+	$.each(cjAnimate,function(i,obj){
+		obj.outAn();
+	});
+	
+	function showMusic(){
+		var $music = $('#music');
+		var $audio1 = $('#audio1');
+		var onoff = true;
+		$music.on('touchstart',function(){
+			if(onoff){
+				$(this).attr('class','active');
+				$audio1.get(0).play();
+			}
+			else{
+				$(this).attr('class','');
+				$audio1.get(0).pause();
+			}
+			onoff = !onoff;
+		});
+		$music.trigger('touchstart');
+		//苹果不支持自动播放  自动触发
+		
+	}
+	showMusic();
+	cjAnimate[0].inAn();
+	
+	/*function showloading(){
+		var arr = ['1.jpg','1.jpg','1.jpg','1.jpg','e.png','ad1.png','ad2.png','ad3.png','ad4.png','c1.png','c2.png','c3.png','c4.png','c5.png','c6.png','d1.png'];//把要加载的图片都放到数组里面
+		var $loading = $('#loading');
+		var iNow = 0;
+		
+		for(var i=0;i<arr.length;i++){
+			var objImg = new Image();
+			objImg.src = 'img/'+arr[i];
+			objImg.onload = function(){
+				iNow++;
+				if(iNow == arr.length){
+					$loading.animate({opacity:0},1000,function(){
+						$(this).remove();
+					});
+				}
+			};
+			objImg.onerror = function(){
+				$loading.animate({opacity:0},1000,function(){
+					$(this).remove();
+				});
+			};
+		}
+	}*/
+	
+});
+</script>
+</head>
+
+<body>
+<div id="main">
+	<!--<div id="loading">
+    	<ul>
+        	<li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div>你的技能是否已经载满....</div>
+    </div>-->
+	<!--<canvas id="c1" width="640" height="960"></canvas>-->
+	<ul id="list">
+    	<li>
+        	<ul class="li1Child">
+            	
+            	<li>
+                	<p>即使没有观众</p>
+
+                </li>
+            	<li>
+           
+                    <p>即使唯一的观众还是一只鸟</p>
+                </li>
+                <li>
+                	<p>也要站上舞台</p>
+             
+                </li>
+                <li>
+              
+                	<p>做自己的主角,为自己表演</p>
+                </li>
+            </ul>
+        </li>
+        <li>
+        	<ul class="li2Child">
+            	<li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li>
+        	<div class="li3Child"></div>
+        </li>
+        <li>
+        	<ul class="li4Child">
+            	<li>Never frown, even when you are sad, because you never know who is falling in love with your smile.<br /><br />
+                纵然伤心，也不要愁眉不展，因为你不知是谁会爱上你的笑容。
+                </li>
+            </ul>
+        </li>
+        <li class="list5child">
+        	<div></div>
+        </li>
+        <li class="list6child">
+        	<div></div>
+        </li>
+        <li  class="list7child">
+        	<div></div>            
+        </li>
+        <li class="list8child">
+        	<div></div>
+        </li>
+    </ul>
+    <div id="arrow"></div>
+    <div id="music">
+    	<audio id="audio1" src="images/music.mp3" preload="auto" loop></audio>
+    </div>
+</div>
+</body>
+</html>
+
